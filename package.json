@@ -1,0 +1,29 @@
+{
+  "name": "viewjson",
+  "version": "1.0.0",
+  "description": "Contains dependencies for a webpage that accepts Smart contract as an input from the user and returns the JSON version of smart contract on the web page after being parsed by the ANTLR4 parser -- solidity-parser/parser",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node --watch hosting/backend.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ishansathe/ViewJSON.git"
+  },
+  "keywords": [
+    "Smart",
+    "Contract",
+    "JSON.",
+    "ANTLR4"
+  ],
+  "dependencies": {
+    "express": "4.19.2"
+  },
+  "author": "Ishan Sathe",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ishansathe/ViewJSON/issues"
+  },
+  "homepage": "https://github.com/ishansathe/ViewJSON#readme"
+}

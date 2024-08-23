@@ -5,12 +5,26 @@
             ANTLR4 Output Generator for Smart Contracts
         </title>
         <script src="function.js"></script>
+        <link rel="stylesheet" href="tester.css">
     </head>
     <body>
-        <h1>
-            Enter the Smart Contract Below
-        </h1>
-        <input type="file" accept=".sol"/>
-        <button onclick="action()"></button>
+        <div id="base-functionality">
+            <h1>
+                Enter the Smart Contract Below
+            </h1>
+            <input id="fileInput" type="file" accept=".sol"/>
+            <button onclick="action()"></button>
+            <input type="submit" onclick="action()" name="" id="">
+    
+            <form action="/json" method="post" enctype="multipart/form-data">
+                <input type="file" id="contractInput" name="contractcode" accept=".sol">
+                <input type="submit" onclick="action()">
+            </form>
+            <!-- The form must have a enctype of 'multipart/form-data' 
+             The input type 'file' must also have a 'name' attribute. The name can be anything.
+             We are uncertain why. But it is necessary.
+             A guess is that the name is essential for the formidable package to recognise the existence of a file-->
+    
+        </div>        
     </body>
 </html>

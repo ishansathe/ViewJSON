@@ -1,0 +1,15 @@
+#base-functionality{
+    margin-top: 10%;
+    /* margin-left: 40%;
+    margin-right: 50%; */
+    width: 600px;
+    background-color: rgb(59, 203, 59);
+    padding: 2rem;
+    display: block;
+}
+body{
+    /* background-color: red; */
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}

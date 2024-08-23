@@ -12,19 +12,24 @@
             <h1>
                 Enter the Smart Contract Below
             </h1>
-            <input id="fileInput" type="file" accept=".sol"/>
-            <button onclick="action()"></button>
-            <input type="submit" onclick="action()" name="" id="">
+            <button formaction=""></button>
     
             <form action="/json" method="post" enctype="multipart/form-data">
-                <input type="file" id="contractInput" name="contractcode" accept=".sol">
+                <label for="contractInput">Here, you may enter a file</label>
+                <input type="file" id="contractInput" name="sourcefile" accept=".sol">
                 <input type="submit" onclick="action()">
             </form>
             <!-- The form must have a enctype of 'multipart/form-data' 
-             The input type 'file' must also have a 'name' attribute. The name can be anything.
-             We are uncertain why. But it is necessary.
-             A guess is that the name is essential for the formidable package to recognise the existence of a file-->
+             The 'name' attribute is essential as it helps set the property to the file
+             I believe it should be possible to use the array indexing. But hasn't been tested as of yet -->
     
+             <form action="/json" method="post" enctype="multipart/form-data">
+                <label for="contractcode">Here, you directly enter the smart contract code</label>
+                <br>
+                <textarea name="contractcode" id="contractcode"></textarea>
+                <!-- Smart contract code is accepted as a blob only by using 'textarea' and not 'input type=text' -->
+                <input type="submit">
+             </form>
         </div>        
     </body>
 </html>

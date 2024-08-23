@@ -10,29 +10,36 @@ app.listen(PORT, () => {
 })
 
 let homePage = (req, res, next) => {
-    fs.readFile('./frontend/HomePage.html', 'utf-8', (err, data) => {
-        if(err){
-            console.log(err)
-        }
-        else 
-            res.send(data)
-    })
+    res.sendFile('C:\\Users\\ACER\\Documents\\github\\ViewJSON\\frontend\\HomePage.html')
+    // Sincerely, this makes life much easier.
+    // I guess readFile comes in handy when we want to include it as a component in another thing.
 }
 
 
 let dataParser = (req, res, next) => {
     let fileLocation, contractCode, contractAST
 
-    const form = formidable({})
+    const form = formidable({allowEmptyFiles:true, minFileSize: 0})
     form.parse(req, (err, fields, files) => {
         if(err){
             next(err)
             return
         }
         else {
-            fileLocation =  files.contractcode[0].filepath
-            contractCode = fs.readFileSync(fileLocation, 'utf-8')
-            contractAST = contractparser.parse(String(contractCode))
+
+            // If file has been uploaded
+            if(files.sourcefile){
+                fileLocation =  files.sourcefile[0].filepath
+                contractCode = fs.readFileSync(fileLocation, 'utf-8')
+                contractAST = contractparser.parse(contractCode)
+            }
+
+            // If the source code has been uploaded in the text area
+            if(fields.contractcode) {
+                contractCode = fields.contractcode[0]
+                // I'm not quite sure why there is an array for this field. It's just a text area
+                contractAST = contractparser.parse(contractCode)
+            }
             res.json({contractAST})
         }
     })

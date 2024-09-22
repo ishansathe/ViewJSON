@@ -19,6 +19,7 @@ let homePage = (req, res, next) => {
 let dataParser = (req, res, next) => {
     let fileLocation, contractCode, contractAST
 
+
     const form = formidable({allowEmptyFiles:true, minFileSize: 0})
     form.parse(req, (err, fields, files) => {
         if(err){
@@ -34,6 +35,8 @@ let dataParser = (req, res, next) => {
                 contractAST = contractparser.parse(contractCode)
             }
 
+            console.log({fields, files})
+
             // If the source code has been uploaded in the text area
             if(fields.contractcode) {
                 contractCode = fields.contractcode[0]
@@ -48,3 +51,10 @@ let dataParser = (req, res, next) => {
 app.use(express.static('./frontend'))
 app.get('/', homePage)
 app.post('/json', dataParser)
+app.post('/test', (req, res) => {
+    let body = req.body
+    if(!body){
+        throw new Error("No body in request")
+    }
+    res.json({requestBody: req.body})  // <==== req.body will be a parsed JSON object
+  })

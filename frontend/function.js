@@ -1,3 +1,5 @@
+"use-strict"
+
 let action = () =>{
     console.log("Button has been clicked.")
     var ok = document.getElementById('fileInput').files[0]

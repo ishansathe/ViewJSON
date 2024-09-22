@@ -20,14 +20,22 @@
                 <input type="submit" onclick="action()">
             </form>
             <!-- The form must have a enctype of 'multipart/form-data' 
-             The 'name' attribute is essential as it helps set the property to the file
-             I believe it should be possible to use the array indexing. But hasn't been tested as of yet -->
+            The 'name' attribute is essential for formidable package.
+            Indexing must be done by default, however the package parses it this way and produces the output
+            Maybe we will test in the future without this package -->
     
              <form action="/json" method="post" enctype="multipart/form-data">
                 <label for="contractcode">Here, you directly enter the smart contract code</label>
                 <br>
                 <textarea name="contractcode" id="contractcode"></textarea>
                 <!-- Smart contract code is accepted as a blob only by using 'textarea' and not 'input type=text' -->
+                 <br>
+                 <input type="text" name="who">
+                <input type="submit">
+             </form>
+             <br>
+             <form action="/test" method="post">
+                <input type="text" name="something">
                 <input type="submit">
              </form>
         </div>        
